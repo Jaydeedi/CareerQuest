@@ -1,0 +1,14 @@
+# Kailangan ng Apache module na mod_rewrite (karaniwang naka-enable na ito sa XAMPP/WAMP)
+RewriteEngine On
+
+# Base directory (Kung ang project niyo ay hindi sa root, halimbawa: http://localhost/sololearn_clone/)
+# Kung ang project niyo ay nasa http://localhost/, iwanan lang na /
+RewriteBase /
+
+# Huwag i-rewrite ang mga existing files o directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Ang lahat ng requests ay i-send sa index.php
+# (Ito ang nagiging 'Front Controller' mo)
+RewriteRule ^(.*)$ index.php [QSA,L]
