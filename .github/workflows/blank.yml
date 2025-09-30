@@ -1,0 +1,53 @@
+name: Pest CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: u163142708_career_quest
+          MYSQL_USER: u163142708_career_quest
+          MYSQL_PASSWORD: Careerquest12345
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v4
+      with:
+        php-version: '8.2'
+        extensions: pdo_mysql
+
+    - name: Install dependencies
+      run: composer install
+
+    - name: Wait for MySQL
+      run: |
+        until mysql -h 127.0.0.1 -u u163142708_career_quest -pCareerquest12345 -e "SELECT 1"; do
+          sleep 1
+        done
+
+    - name: Run Pest tests
+      run: ./vendor/bin/pest --testdox
+      env:
+        DB_HOST: jstnagls.shop
+        DB_USER: u163142708_career_quest
+        DB_PASS: Careerquest12345
+        DB_NAME: u163142708_career_quest
