@@ -57,7 +57,7 @@ it('logs in successfully as normal user', function () {
 
     $_SESSION = [];
 
-    $result = loginUser($db, 'us@example.com', 'secret');
+    $result = loginUser($db, '@example.com', 'secret');
 
     expect($result)->toBe('index.php');
     expect($_SESSION['user_name'])->toBe('Normal User');
