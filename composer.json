@@ -2,7 +2,8 @@
     "require-dev": {
         "phpunit/phpunit": "^9",
         "pestphp/pest": "^1.23",
-        "pestphp/pest-plugin": "^1.1"
+        "pestphp/pest-plugin": "^1.1",
+        "pestphp/pest-plugin-coverage": "^1.0"
     },
     "config": {
         "allow-plugins": {

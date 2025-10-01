@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit49c198f8d7abf56fa402f58101a7275c
+class ComposerStaticInitf892268352e30a1106e968d509c963f7
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -40,6 +40,7 @@ class ComposerStaticInit49c198f8d7abf56fa402f58101a7275c
             'Psr\\Container\\' => 14,
             'PhpParser\\' => 10,
             'Pest\\Plugin\\' => 12,
+            'Pest\\PluginCoverage\\' => 20,
             'Pest\\' => 5,
         ),
         'N' => 
@@ -101,6 +102,10 @@ class ComposerStaticInit49c198f8d7abf56fa402f58101a7275c
         'Pest\\Plugin\\' => 
         array (
             0 => __DIR__ . '/..' . '/pestphp/pest-plugin/src',
+        ),
+        'Pest\\PluginCoverage\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pestphp/pest-plugin-coverage/src',
         ),
         'Pest\\' => 
         array (
@@ -757,9 +762,9 @@ class ComposerStaticInit49c198f8d7abf56fa402f58101a7275c
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit49c198f8d7abf56fa402f58101a7275c::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit49c198f8d7abf56fa402f58101a7275c::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit49c198f8d7abf56fa402f58101a7275c::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf892268352e30a1106e968d509c963f7::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf892268352e30a1106e968d509c963f7::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitf892268352e30a1106e968d509c963f7::$classMap;
 
         }, null, ClassLoader::class);
     }

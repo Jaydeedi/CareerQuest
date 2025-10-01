@@ -18,6 +18,7 @@ return array(
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'Pest\\Plugin\\' => array($vendorDir . '/pestphp/pest-plugin/src'),
+    'Pest\\PluginCoverage\\' => array($vendorDir . '/pestphp/pest-plugin-coverage/src'),
     'Pest\\' => array($vendorDir . '/pestphp/pest/src'),
     'NunoMaduro\\Collision\\' => array($vendorDir . '/nunomaduro/collision/src'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
