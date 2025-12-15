@@ -161,8 +161,11 @@ jobs:
             exit 1
           fi
 
-          # Install Render CLI via npm
-          npm install -g @render/cli
+          # Install Render CLI via official curl script
+          curl -fsSL https://cdn.render.com/cli/latest/install.sh | bash
+          export PATH="$HOME/.render/bin:$PATH"
+
+          # Verify CLI installation
           render --version
 
           # Deploy
