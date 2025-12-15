@@ -1,29 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import bcrypt from 'bcryptjs';
-
-const SALT_ROUNDS = 10;
-
-async function hashPassword(password: string): Promise<string> {
-  return bcrypt.hash(password, SALT_ROUNDS);
-}
-
-async function comparePassword(password: string, hash: string): Promise<boolean> {
-  return bcrypt.compare(password, hash);
-}
-
-function requireAuth(req: any, res: any, next: any) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.status(401).send({ error: 'Not authenticated' });
-}
-
-function requireAdmin(req: any, res: any, next: any) {
-  if (req.isAuthenticated() && req.user?.isAdmin) {
-    return next();
-  }
-  res.status(403).send({ error: 'Admin access required' });
-}
+import { hashPassword, comparePassword, requireAuth, requireAdmin } from '../../server/auth';
 
 describe('Auth Module', () => {
   describe('hashPassword', () => {

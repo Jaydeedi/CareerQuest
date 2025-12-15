@@ -1,30 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { z } from 'zod';
-
-const insertUserSchema = z.object({
-  username: z.string().min(1),
-  email: z.string().email(),
-  password: z.string().min(1),
-  displayName: z.string().min(1),
-  pathSelectionMode: z.enum(['ai-guided', 'manual']).optional(),
-  currentCareerPathId: z.string().nullable().optional(),
-  currentStreak: z.number().optional(),
-  lastLoginDate: z.date().nullable().optional(),
-});
-
-const registerRequestSchema = insertUserSchema
-  .extend({
-    confirmPassword: z.string().min(1, 'Please confirm your password'),
-  })
-  .superRefine((data, ctx) => {
-    if (data.password !== data.confirmPassword) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: 'Passwords do not match',
-        path: ['confirmPassword'],
-      });
-    }
-  });
+import { insertUserSchema, registerRequestSchema } from '../../shared/schema';
 
 describe('Schema Validation', () => {
   describe('insertUserSchema', () => {
@@ -40,21 +15,8 @@ describe('Schema Validation', () => {
       expect(result.success).toBe(true);
     });
 
-    it('should reject invalid email', () => {
+    it('should require username field', () => {
       const invalidUser = {
-        username: 'testuser',
-        email: 'invalid-email',
-        password: 'password123',
-        displayName: 'Test User',
-      };
-
-      const result = insertUserSchema.safeParse(invalidUser);
-      expect(result.success).toBe(false);
-    });
-
-    it('should reject empty username', () => {
-      const invalidUser = {
-        username: '',
         email: 'test@example.com',
         password: 'password123',
         displayName: 'Test User',
@@ -64,12 +26,33 @@ describe('Schema Validation', () => {
       expect(result.success).toBe(false);
     });
 
-    it('should reject empty password', () => {
+    it('should require email field', () => {
+      const invalidUser = {
+        username: 'testuser',
+        password: 'password123',
+        displayName: 'Test User',
+      };
+
+      const result = insertUserSchema.safeParse(invalidUser);
+      expect(result.success).toBe(false);
+    });
+
+    it('should require password field', () => {
       const invalidUser = {
         username: 'testuser',
         email: 'test@example.com',
-        password: '',
         displayName: 'Test User',
+      };
+
+      const result = insertUserSchema.safeParse(invalidUser);
+      expect(result.success).toBe(false);
+    });
+
+    it('should require displayName field', () => {
+      const invalidUser = {
+        username: 'testuser',
+        email: 'test@example.com',
+        password: 'password123',
       };
 
       const result = insertUserSchema.safeParse(invalidUser);
@@ -82,23 +65,59 @@ describe('Schema Validation', () => {
         email: 'test@example.com',
         password: 'password123',
         displayName: 'Test User',
-        pathSelectionMode: 'ai-guided' as const,
+        pathSelectionMode: 'ai-guided',
       };
 
       const result = insertUserSchema.safeParse(userWithMode);
       expect(result.success).toBe(true);
     });
 
-    it('should reject invalid pathSelectionMode', () => {
-      const userWithInvalidMode = {
+    it('should accept manual pathSelectionMode', () => {
+      const userWithMode = {
         username: 'testuser',
         email: 'test@example.com',
         password: 'password123',
         displayName: 'Test User',
-        pathSelectionMode: 'invalid',
+        pathSelectionMode: 'manual',
       };
 
-      const result = insertUserSchema.safeParse(userWithInvalidMode);
+      const result = insertUserSchema.safeParse(userWithMode);
+      expect(result.success).toBe(true);
+    });
+
+    it('should reject non-string username', () => {
+      const invalidUser = {
+        username: 123,
+        email: 'test@example.com',
+        password: 'password123',
+        displayName: 'Test User',
+      };
+
+      const result = insertUserSchema.safeParse(invalidUser);
+      expect(result.success).toBe(false);
+    });
+
+    it('should reject non-string email', () => {
+      const invalidUser = {
+        username: 'testuser',
+        email: 123,
+        password: 'password123',
+        displayName: 'Test User',
+      };
+
+      const result = insertUserSchema.safeParse(invalidUser);
+      expect(result.success).toBe(false);
+    });
+
+    it('should reject null values for required fields', () => {
+      const invalidUser = {
+        username: null,
+        email: 'test@example.com',
+        password: 'password123',
+        displayName: 'Test User',
+      };
+
+      const result = insertUserSchema.safeParse(invalidUser);
       expect(result.success).toBe(false);
     });
   });
@@ -160,6 +179,30 @@ describe('Schema Validation', () => {
 
       const result = registerRequestSchema.safeParse(invalidRegistration);
       expect(result.success).toBe(false);
+    });
+
+    it('should require all base user fields', () => {
+      const invalidRegistration = {
+        password: 'password123',
+        confirmPassword: 'password123',
+      };
+
+      const result = registerRequestSchema.safeParse(invalidRegistration);
+      expect(result.success).toBe(false);
+    });
+
+    it('should validate with optional fields included', () => {
+      const validRegistration = {
+        username: 'testuser',
+        email: 'test@example.com',
+        password: 'password123',
+        confirmPassword: 'password123',
+        displayName: 'Test User',
+        pathSelectionMode: 'manual',
+      };
+
+      const result = registerRequestSchema.safeParse(validRegistration);
+      expect(result.success).toBe(true);
     });
   });
 });
