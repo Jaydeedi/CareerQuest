@@ -2,9 +2,9 @@ name: CI - Tests Only
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, master,test-static-deploy]
   pull_request:
-    branches: [main, master]
+    branches: [main, master,test-static-deploy]
 
 jobs:
   test:

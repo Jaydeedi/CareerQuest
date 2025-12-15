@@ -5,7 +5,7 @@ on:
     workflows: ["CI - Tests Only"]
     types:
       - completed
-    branches: [main]
+    branches: [main,test-static-deploy]
 
 jobs:
   deploy:
