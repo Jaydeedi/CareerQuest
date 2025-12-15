@@ -1,4 +1,3 @@
-
 import { HfInference } from "@huggingface/inference";
 
 // Initialize Hugging Face client
@@ -18,7 +17,7 @@ export async function classifyQuestionHF(questionText: string): Promise<{
       parameters: {
         candidate_labels: ["frontend", "backend", "data science", "algorithms", "security", "cloud"],
       },
-    });
+    }) as any;
 
     return {
       category: result.labels[0],
@@ -128,7 +127,7 @@ Generate exactly ${count} questions following this format:`;
     
     // Strategy 2: Multiple JSON objects
     if (questions.length === 0) {
-      const objectMatches = generatedText.matchAll(/\{[\s\S]*?"question"[\s\S]*?\}/g);
+      const objectMatches = Array.from(generatedText.matchAll(/\{[\s\S]*?"question"[\s\S]*?\}/g));
       for (const match of objectMatches) {
         try {
           const obj = JSON.parse(match[0]);

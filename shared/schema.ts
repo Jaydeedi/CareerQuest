@@ -134,7 +134,7 @@ export const codeChallenges = pgTable("code_challenges", {
   careerPathId: varchar("career_path_id").references(() => careerPaths.id),
   requiredLevel: integer("required_level").notNull().default(1),
   xpReward: integer("xp_reward").notNull().default(150),
-  starterCode: text("starter_code").notNull(),
+  starterCode: json("starter_code").notNull().$type<Record<string, string>>(),
   testCases: json("test_cases").notNull().$type<Array<{ input: string; expectedOutput: string }>>(),
   supportedLanguages: json("supported_languages").notNull().$type<string[]>(),
   createdAt: timestamp("created_at").notNull().defaultNow(),

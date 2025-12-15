@@ -675,7 +675,7 @@ export async function generatePracticeQuiz(
   topic?: string,
   difficulty?: "beginner" | "intermediate" | "advanced",
   userId?: string
-): Promise<GeneratedQuestion[]> {
+): Promise<{ questions: GeneratedQuestion[]; usedTrainedModel: boolean }> {
   return learningIntelligence.generatePracticeQuiz(careerPath, userLevel, topic, difficulty, userId);
 }
 

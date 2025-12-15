@@ -411,7 +411,11 @@ export default function CodeChallenge({ challengeId }: CodeChallengeProps) {
 
           <div className="lg:col-span-2">
             <CodeEditor
-              initialCode={challenge.starterCode || `// Write your solution here\nfunction solution() {\n  // Your code\n}`}
+              initialCode={
+                typeof challenge.starterCode === 'object' 
+                  ? (challenge.starterCode[selectedLanguage] || challenge.starterCode.javascript || `// Write your solution here\nfunction solution() {\n  // Your code\n}`)
+                  : (challenge.starterCode || `// Write your solution here\nfunction solution() {\n  // Your code\n}`)
+              }
               language={selectedLanguage}
               onLanguageChange={setSelectedLanguage}
               onSubmit={handleSubmit}

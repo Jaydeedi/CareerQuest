@@ -220,7 +220,7 @@ async function seedFirestore() {
         careerPathId: fullStackPath?.id,
         requiredLevel: 1,
         xpReward: 150,
-        starterCode: "function fizzBuzz(n) {\n  // Your code here\n}",
+        starterCode: { javascript: "function fizzBuzz(n) {\n  // Your code here\n}", python: "def fizz_buzz(n):\n    # Your code here\n    pass" },
         testCases: [
           { input: "15", expectedOutput: "FizzBuzz" },
           { input: "9", expectedOutput: "Fizz" },
@@ -236,7 +236,7 @@ async function seedFirestore() {
         careerPathId: fullStackPath?.id,
         requiredLevel: 1,
         xpReward: 120,
-        starterCode: "function reverseString(str) {\n  // Your code here\n}",
+        starterCode: { javascript: "function reverseString(str) {\n  // Your code here\n}", python: "def reverse_string(s):\n    # Your code here\n    pass" },
         testCases: [
           { input: "hello", expectedOutput: "olleh" },
           { input: "world", expectedOutput: "dlrow" },
@@ -251,7 +251,7 @@ async function seedFirestore() {
         careerPathId: fullStackPath?.id,
         requiredLevel: 3,
         xpReward: 200,
-        starterCode: "function isPalindrome(str) {\n  // Your code here\n}",
+        starterCode: { javascript: "function isPalindrome(str) {\n  // Your code here\n}", python: "def is_palindrome(s):\n    # Your code here\n    pass" },
         testCases: [
           { input: "racecar", expectedOutput: "true" },
           { input: "hello", expectedOutput: "false" },

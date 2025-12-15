@@ -8,6 +8,8 @@ export default function DailyChallengeCardExample() {
       xpReward={150}
       timeEstimate="15 min"
       streak={7}
+      challengeId="challenge-001"
+      challengeType="code"
     />
   );
 }

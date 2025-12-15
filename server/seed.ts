@@ -177,7 +177,7 @@ export async function seedDatabase() {
     careerPathId: fullStackPath.id,
     requiredLevel: 2,
     xpReward: 150,
-    starterCode: "function fizzBuzz(n) {\n  // Your code here\n}",
+    starterCode: { javascript: "function fizzBuzz(n) {\n  // Your code here\n}", python: "def fizz_buzz(n):\n    # Your code here\n    pass" },
     testCases: [
       { input: "15", expectedOutput: "FizzBuzz" },
       { input: "3", expectedOutput: "Fizz" },
