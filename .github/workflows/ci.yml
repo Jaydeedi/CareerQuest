@@ -163,30 +163,30 @@ jobs:
           fi
           echo "All checks passed successfully!"
 
-  deploy-render:
-    name: Deploy to Render
+  deploy-railway:
+    name: Deploy to Railway
     runs-on: ubuntu-latest
     needs: [all-checks-passed]
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     
     steps:
-      - name: Trigger Render Deploy
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Railway CLI
+        run: npm install -g @railway/cli
+
+      - name: Deploy to Railway
         run: |
-          if [ -z "${{ secrets.RENDER_DEPLOY_HOOK_URL }}" ]; then
-            echo "::warning::RENDER_DEPLOY_HOOK_URL secret not configured. Skipping deployment."
+          if [ -z "${{ secrets.RAILWAY_TOKEN }}" ]; then
+            echo "::warning::RAILWAY_TOKEN secret not configured. Skipping deployment."
+            echo "## Railway Deployment Skipped" >> $GITHUB_STEP_SUMMARY
+            echo "Add RAILWAY_TOKEN secret to enable auto-deployment." >> $GITHUB_STEP_SUMMARY
             exit 0
           fi
-          echo "Triggering deployment to Render..."
-          response=$(curl -s -w "\n%{http_code}" -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}")
-          http_code=$(echo "$response" | tail -n1)
-          body=$(echo "$response" | sed '$d')
-          echo "Response: $body"
-          echo "HTTP Status: $http_code"
-          if [ "$http_code" -ge 200 ] && [ "$http_code" -lt 300 ]; then
-            echo "Deployment triggered successfully!"
-            echo "## Render Deployment Triggered" >> $GITHUB_STEP_SUMMARY
-            echo "Deployment has been triggered on Render. Check your Render dashboard for status." >> $GITHUB_STEP_SUMMARY
-          else
-            echo "Failed to trigger deployment"
-            exit 1
-          fi
+          echo "Deploying to Railway..."
+          railway up --service ${{ secrets.RAILWAY_SERVICE_ID || 'careerquest' }}
+          echo "## Railway Deployment Triggered" >> $GITHUB_STEP_SUMMARY
+          echo "Deployment has been triggered on Railway. Check your Railway dashboard for status." >> $GITHUB_STEP_SUMMARY
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
