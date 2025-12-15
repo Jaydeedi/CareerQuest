@@ -1,192 +1,35 @@
-name: CI/CD Pipeline
-# Repository: https://github.com/Jaydeedi/CareerQuest.git
+name: CI - Tests Only
 
 on:
   push:
-    branches: [main, master, develop]
+    branches: [main, master]
   pull_request:
-    branches: [main, master, develop]
-
-env:
-  NODE_VERSION: '20'
+    branches: [main, master]
 
 jobs:
-  lint-and-typecheck:
-    name: Lint & Type Check
+  test:
+    name: Build and Test
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          node-version: '20'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Type check
         run: npm run check
 
-  test:
-    name: Unit Tests
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Run tests
+        run: npm test
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run unit tests
-        run: npm run test
-
-      - name: Upload test results
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: test-results
-          path: |
-            coverage/
-          retention-days: 30
-
-  test-coverage:
-    name: Test Coverage
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run tests with coverage
-        run: npm run test:coverage
-
-      - name: Upload coverage reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-report
-          path: coverage/
-          retention-days: 30
-
-      - name: Coverage Summary
-        run: |
-          echo "## Test Coverage Summary" >> $GITHUB_STEP_SUMMARY
-          if [ -f coverage/coverage-summary.json ]; then
-            cat coverage/coverage-summary.json | jq -r '.total | "| Metric | Coverage |\n|--------|----------|\n| Statements | \(.statements.pct)% |\n| Branches | \(.branches.pct)% |\n| Functions | \(.functions.pct)% |\n| Lines | \(.lines.pct)% |"' >> $GITHUB_STEP_SUMMARY
-          fi
-
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    needs: [lint-and-typecheck, test]
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build application
+      - name: Build
         run: npm run build
         env:
           NODE_ENV: production
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          path: dist/
-          retention-days: 7
-
-  security-audit:
-    name: Security Audit
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run security audit
-        run: npm audit --audit-level=high
-        continue-on-error: true
-
-  all-checks-passed:
-    name: All Checks Passed
-    runs-on: ubuntu-latest
-    needs: [lint-and-typecheck, test, test-coverage, build]
-    if: always()
-    
-    steps:
-      - name: Check job results
-        run: |
-          if [[ "${{ needs.lint-and-typecheck.result }}" != "success" ]] || \
-             [[ "${{ needs.test.result }}" != "success" ]] || \
-             [[ "${{ needs.test-coverage.result }}" != "success" ]] || \
-             [[ "${{ needs.build.result }}" != "success" ]]; then
-            echo "One or more required jobs failed"
-            exit 1
-          fi
-          echo "All checks passed successfully!"
-
-  deploy-railway:
-    name: Deploy to Railway
-    runs-on: ubuntu-latest
-    needs: [all-checks-passed]
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Install Railway CLI
-        run: npm install -g @railway/cli
-
-      - name: Deploy to Railway
-        run: |
-          if [ -z "${{ secrets.RAILWAY_TOKEN }}" ]; then
-            echo "::warning::RAILWAY_TOKEN secret not configured. Skipping deployment."
-            echo "## Railway Deployment Skipped" >> $GITHUB_STEP_SUMMARY
-            echo "Add RAILWAY_TOKEN secret to enable auto-deployment." >> $GITHUB_STEP_SUMMARY
-            exit 0
-          fi
-          echo "Deploying to Railway..."
-          railway up --service ${{ secrets.RAILWAY_SERVICE_ID || 'careerquest' }}
-          echo "## Railway Deployment Triggered" >> $GITHUB_STEP_SUMMARY
-          echo "Deployment has been triggered on Railway. Check your Railway dashboard for status." >> $GITHUB_STEP_SUMMARY
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
