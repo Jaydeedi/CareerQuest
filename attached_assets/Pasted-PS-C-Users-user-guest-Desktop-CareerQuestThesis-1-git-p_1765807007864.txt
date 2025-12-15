@@ -1,0 +1,47 @@
+PS C:\Users\user guest\Desktop\CareerQuestThesis-1> git push origin main
+To https://github.com/Jaydeedi/CareerQuest.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'https://github.com/Jaydeedi/CareerQuest.git'
+hint: Updates were rejected because a pushed branch tip is behind its remote    
+hint: counterpart. If you want to integrate the remote changes, use 'git pull'  
+hint: before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.      
+PS C:\Users\user guest\Desktop\CareerQuestThesis-1> git status
+interactive rebase in progress; onto 64c9f11
+Last command done (1 command done):
+   pick c431332 # Saved progress at the end of the loop
+Next commands to do (8 remaining commands):
+   pick 0b224e5 # Update example components and fix data type mismatches in API
+   pick 851aad9 # Update project documentation with system architecture and dependencies
+  (use "git rebase --edit-todo" to view and edit)
+You are currently rebasing branch 'main' on '64c9f11'.
+  (all conflicts fixed: run "git rebase --continue")
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   coverage/client/src/lib/index.html
+        new file:   coverage/client/src/lib/passwordValidation.ts.html
+        new file:   coverage/coverage-final.json
+        new file:   coverage/index.html
+        new file:   coverage/lcov-report/client/src/lib/index.html
+        new file:   coverage/lcov-report/client/src/lib/passwordValidation.ts.html
+        new file:   coverage/lcov-report/index.html
+        new file:   coverage/lcov-report/server/auth.ts.html
+        new file:   coverage/lcov-report/server/dailyChallenges.ts.html
+        new file:   coverage/lcov-report/server/index.html
+        new file:   coverage/lcov-report/server/learning-intelligence.ts.html
+        new file:   coverage/lcov-report/server/ml-client.ts.html
+        new file:   coverage/lcov-report/server/naiveBayes.ts.html
+        new file:   coverage/lcov-report/server/verify-question-dataset.ts.html
+        new file:   coverage/lcov-report/shared/index.html
+        new file:   coverage/lcov-report/shared/schema.ts.html
+        new file:   coverage/lcov.info
+        new file:   coverage/server/auth.ts.html
+        new file:   coverage/server/dailyChallenges.ts.html
+        new file:   coverage/server/index.html
+        new file:   coverage/server/learning-intelligence.ts.html
+        new file:   coverage/server/ml-client.ts.html
+        new file:   coverage/server/naiveBayes.ts.html
+        new file:   coverage/server/verify-question-dataset.ts.html
+        new file:   coverage/shared/index.html
+        new file:   coverage/shared/schema.ts.html
