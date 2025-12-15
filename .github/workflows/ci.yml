@@ -141,7 +141,7 @@ jobs:
   deploy:
     name: Deploy to Render
     runs-on: ubuntu-latest
-    needs: build  # deploy only if build succeeds
+    needs: build
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -151,13 +151,20 @@ jobs:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
           RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
         run: |
-          # Install Render CLI
-          curl -fsSL https://cdn.render.com/cli/latest/install.sh | bash
-          export PATH="$HOME/.render/bin:$PATH"
-          
-          # Verify CLI is installed
+          # Fail early if secrets are missing
+          if [ -z "$RENDER_API_KEY" ]; then
+            echo "ERROR: RENDER_API_KEY is not set!"
+            exit 1
+          fi
+          if [ -z "$RENDER_SERVICE_ID" ]; then
+            echo "ERROR: RENDER_SERVICE_ID is not set!"
+            exit 1
+          fi
+
+          # Install Render CLI via npm
+          npm install -g @render/cli
           render --version
-          
+
           # Deploy
           render deploy --service $RENDER_SERVICE_ID --wait
 
