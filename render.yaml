@@ -1,15 +1,9 @@
 services:
-  - type: web
+  - type: static
     name: careerquest
-    runtime: node
-    plan: free
     buildCommand: npm install && npm run build
-    startCommand: npm start
-    healthCheckPath: /api/health
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: NODE_VERSION
-        value: 20
-      - key: DATABASE_URL
-        sync: false
+    staticPublishPath: dist/public
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: no-cache
