@@ -1,21 +1,20 @@
 import QuizCard from '../QuizCard';
 
-//todo: remove mock functionality
 const mockQuestions = [
   {
-    id: 1,
+    id: "q1",
     question: "What is the time complexity of binary search?",
     options: ["O(n)", "O(log n)", "O(n²)", "O(1)"],
     correctAnswer: 1
   },
   {
-    id: 2,
+    id: "q2",
     question: "Which data structure uses LIFO (Last In First Out)?",
     options: ["Queue", "Stack", "Array", "Tree"],
     correctAnswer: 1
   },
   {
-    id: 3,
+    id: "q3",
     question: "What does SQL stand for?",
     options: [
       "Structured Query Language",

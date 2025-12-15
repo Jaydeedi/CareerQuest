@@ -22,12 +22,12 @@ async function seedCodeChallenges() {
           careerPathId: fullStackPath.id,
           requiredLevel: 1,
           xpReward: 50,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function reverseString(str) {\n  // Your code here\n}",
             python: "def reverse_string(s):\n    # Your code here\n    pass",
             java: "public class Solution {\n    public static String reverseString(String s) {\n        // Your code here\n    }\n}",
             cpp: "#include <string>\nusing namespace std;\n\nstring reverseString(string s) {\n    // Your code here\n}"
-          },
+          }),
           testCases: [
             { input: "hello", expectedOutput: "olleh" },
             { input: "world", expectedOutput: "dlrow" },
@@ -43,10 +43,10 @@ async function seedCodeChallenges() {
           careerPathId: fullStackPath.id,
           requiredLevel: 2,
           xpReward: 75,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function fizzBuzz(n) {\n  // Return an array of results\n}",
             python: "def fizz_buzz(n):\n    # Return a list of results\n    pass",
-          },
+          }),
           testCases: [
             { input: "15", expectedOutput: "[1,2,Fizz,4,Buzz,Fizz,7,8,Fizz,Buzz,11,Fizz,13,14,FizzBuzz]" },
             { input: "5", expectedOutput: "[1,2,Fizz,4,Buzz]" },
@@ -60,10 +60,10 @@ async function seedCodeChallenges() {
           careerPathId: fullStackPath.id,
           requiredLevel: 3,
           xpReward: 60,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function findMax(arr) {\n  // Your code here\n}",
             python: "def find_max(arr):\n    # Your code here\n    pass",
-          },
+          }),
           testCases: [
             { input: "[1, 5, 3, 9, 2]", expectedOutput: "9" },
             { input: "[-1, -5, -3]", expectedOutput: "-1" },
@@ -78,10 +78,10 @@ async function seedCodeChallenges() {
           careerPathId: fullStackPath.id,
           requiredLevel: 4,
           xpReward: 70,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function countVowels(str) {\n  // Your code here\n}",
             python: "def count_vowels(s):\n    # Your code here\n    pass",
-          },
+          }),
           testCases: [
             { input: "hello", expectedOutput: "2" },
             { input: "programming", expectedOutput: "3" },
@@ -96,10 +96,10 @@ async function seedCodeChallenges() {
           careerPathId: fullStackPath.id,
           requiredLevel: 5,
           xpReward: 65,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function arraySum(arr) {\n  // Your code here\n}",
             python: "def array_sum(arr):\n    # Your code here\n    pass",
-          },
+          }),
           testCases: [
             { input: "[1, 2, 3, 4, 5]", expectedOutput: "15" },
             { input: "[10, -5, 3]", expectedOutput: "8" },
@@ -114,10 +114,10 @@ async function seedCodeChallenges() {
           careerPathId: fullStackPath.id,
           requiredLevel: 8,
           xpReward: 100,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function removeDuplicates(arr) {\n  // Your code here\n}",
             python: "def remove_duplicates(arr):\n    # Your code here\n    pass",
-          },
+          }),
           testCases: [
             { input: "[1, 2, 2, 3, 4, 4, 5]", expectedOutput: "[1,2,3,4,5]" },
             { input: "[1, 1, 1, 1]", expectedOutput: "[1]" },
@@ -131,10 +131,10 @@ async function seedCodeChallenges() {
           careerPathId: fullStackPath.id,
           requiredLevel: 10,
           xpReward: 120,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function fibonacci(n) {\n  // Your code here\n}",
             python: "def fibonacci(n):\n    # Your code here\n    pass",
-          },
+          }),
           testCases: [
             { input: "5", expectedOutput: "[0,1,1,2,3]" },
             { input: "8", expectedOutput: "[0,1,1,2,3,5,8,13]" },
@@ -148,10 +148,10 @@ async function seedCodeChallenges() {
           careerPathId: fullStackPath.id,
           requiredLevel: 12,
           xpReward: 110,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function isPrime(n) {\n  // Your code here\n}",
             python: "def is_prime(n):\n    # Your code here\n    pass",
-          },
+          }),
           testCases: [
             { input: "7", expectedOutput: "true" },
             { input: "10", expectedOutput: "false" },
@@ -166,10 +166,10 @@ async function seedCodeChallenges() {
           careerPathId: fullStackPath.id,
           requiredLevel: 15,
           xpReward: 150,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function binarySearch(arr, target) {\n  // Return index or -1\n}",
             python: "def binary_search(arr, target):\n    # Return index or -1\n    pass",
-          },
+          }),
           testCases: [
             { input: "[1,2,3,4,5,6,7,8,9],5", expectedOutput: "4" },
             { input: "[1,2,3,4,5],10", expectedOutput: "-1" },
@@ -183,10 +183,10 @@ async function seedCodeChallenges() {
           careerPathId: fullStackPath.id,
           requiredLevel: 18,
           xpReward: 200,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function mergeSorted(arr1, arr2) {\n  // Your code here\n}",
             python: "def merge_sorted(arr1, arr2):\n    # Your code here\n    pass",
-          },
+          }),
           testCases: [
             { input: "[1,3,5],[2,4,6]", expectedOutput: "[1,2,3,4,5,6]" },
             { input: "[1,2],[3,4]", expectedOutput: "[1,2,3,4]" },
@@ -211,9 +211,9 @@ async function seedCodeChallenges() {
           careerPathId: dataPath.id,
           requiredLevel: 1,
           xpReward: 60,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "def calculate_mean(numbers):\n    # Your code here\n    pass",
-          },
+          }),
           testCases: [
             { input: "[1, 2, 3, 4, 5]", expectedOutput: "3.0" },
             { input: "[10, 20, 30]", expectedOutput: "20.0" },
@@ -227,9 +227,9 @@ async function seedCodeChallenges() {
           careerPathId: dataPath.id,
           requiredLevel: 3,
           xpReward: 70,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "def calculate_median(numbers):\n    # Your code here\n    pass",
-          },
+          }),
           testCases: [
             { input: "[1, 2, 3, 4, 5]", expectedOutput: "3" },
             { input: "[1, 2, 3, 4]", expectedOutput: "2.5" },
@@ -243,9 +243,9 @@ async function seedCodeChallenges() {
           careerPathId: dataPath.id,
           requiredLevel: 8,
           xpReward: 120,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "import math\n\ndef standard_deviation(numbers):\n    # Your code here\n    pass",
-          },
+          }),
           testCases: [
             { input: "[2, 4, 4, 4, 5, 5, 7, 9]", expectedOutput: "2.0" },
           ],
@@ -258,9 +258,9 @@ async function seedCodeChallenges() {
           careerPathId: dataPath.id,
           requiredLevel: 15,
           xpReward: 200,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "def linear_regression(x, y):\n    # Return slope and intercept\n    pass",
-          },
+          }),
           testCases: [
             { input: "[1,2,3,4,5],[2,4,6,8,10]", expectedOutput: "(2.0,0.0)" },
           ],
@@ -273,9 +273,9 @@ async function seedCodeChallenges() {
           careerPathId: dataPath.id,
           requiredLevel: 10,
           xpReward: 130,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "def normalize_data(data):\n    # Your code here\n    pass",
-          },
+          }),
           testCases: [
             { input: "[1, 2, 3, 4, 5]", expectedOutput: "[0.0,0.25,0.5,0.75,1.0]" },
           ],
@@ -288,9 +288,9 @@ async function seedCodeChallenges() {
           careerPathId: dataPath.id,
           requiredLevel: 5,
           xpReward: 80,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "def count_missing(data):\n    # Your code here\n    pass",
-          },
+          }),
           testCases: [
             { input: "[1, 2, None, 4, None]", expectedOutput: "2" },
             { input: "[1, 2, 3]", expectedOutput: "0" },
@@ -304,9 +304,9 @@ async function seedCodeChallenges() {
           careerPathId: dataPath.id,
           requiredLevel: 18,
           xpReward: 220,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "def correlation(x, y):\n    # Your code here\n    pass",
-          },
+          }),
           testCases: [
             { input: "[1,2,3,4,5],[2,4,6,8,10]", expectedOutput: "1.0" },
           ],
@@ -319,9 +319,9 @@ async function seedCodeChallenges() {
           careerPathId: dataPath.id,
           requiredLevel: 12,
           xpReward: 150,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "import random\n\ndef initialize_centroids(data, k):\n    # Your code here\n    pass",
-          },
+          }),
           testCases: [
             { input: "[[1,2],[3,4],[5,6]],2", expectedOutput: "2" },
           ],
@@ -334,9 +334,9 @@ async function seedCodeChallenges() {
           careerPathId: dataPath.id,
           requiredLevel: 6,
           xpReward: 90,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "import math\n\ndef euclidean_distance(point1, point2):\n    # Your code here\n    pass",
-          },
+          }),
           testCases: [
             { input: "[0,0],[3,4]", expectedOutput: "5.0" },
             { input: "[1,1],[4,5]", expectedOutput: "5.0" },
@@ -350,9 +350,9 @@ async function seedCodeChallenges() {
           careerPathId: dataPath.id,
           requiredLevel: 14,
           xpReward: 140,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "def one_hot_encode(categories):\n    # Your code here\n    pass",
-          },
+          }),
           testCases: [
             { input: "['red','blue','red']", expectedOutput: "[[1,0],[0,1],[1,0]]" },
           ],
@@ -376,10 +376,10 @@ async function seedCodeChallenges() {
           careerPathId: cloudPath.id,
           requiredLevel: 1,
           xpReward: 60,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "def parse_env_vars(env_string):\n    # Your code here\n    pass",
             javascript: "function parseEnvVars(envString) {\n  // Your code here\n}",
-          },
+          }),
           testCases: [
             { input: "PORT=3000\nHOST=localhost", expectedOutput: "{PORT:3000,HOST:localhost}" },
           ],
@@ -392,9 +392,9 @@ async function seedCodeChallenges() {
           careerPathId: cloudPath.id,
           requiredLevel: 5,
           xpReward: 80,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "def validate_docker_tag(tag):\n    # Return True or False\n    pass",
-          },
+          }),
           testCases: [
             { input: "my-app-1.0", expectedOutput: "true" },
             { input: "My-App", expectedOutput: "false" },
@@ -408,9 +408,9 @@ async function seedCodeChallenges() {
           careerPathId: cloudPath.id,
           requiredLevel: 10,
           xpReward: 120,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "def parse_log_line(log):\n    # Return dict with timestamp, level, message\n    pass",
-          },
+          }),
           testCases: [
             { input: "2024-01-01 ERROR Failed to connect", expectedOutput: "{timestamp:2024-01-01,level:ERROR,message:Failed to connect}" },
           ],
@@ -423,9 +423,9 @@ async function seedCodeChallenges() {
           careerPathId: cloudPath.id,
           requiredLevel: 12,
           xpReward: 130,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function healthCheck(cpuUsage, memoryUsage) {\n  // Return 'healthy' or 'unhealthy'\n}",
-          },
+          }),
           testCases: [
             { input: "50,60", expectedOutput: "healthy" },
             { input: "95,90", expectedOutput: "unhealthy" },
@@ -439,9 +439,9 @@ async function seedCodeChallenges() {
           careerPathId: cloudPath.id,
           requiredLevel: 18,
           xpReward: 200,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "class LoadBalancer:\n    def __init__(self, servers):\n        pass\n    \n    def get_next_server(self):\n        pass",
-          },
+          }),
           testCases: [
             { input: "['server1','server2','server3']", expectedOutput: "server1" },
           ],
@@ -454,9 +454,9 @@ async function seedCodeChallenges() {
           careerPathId: cloudPath.id,
           requiredLevel: 8,
           xpReward: 110,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "def merge_configs(config1, config2):\n    # Your code here\n    pass",
-          },
+          }),
           testCases: [
             { input: "{port:3000,host:localhost},{port:8080}", expectedOutput: "{port:8080,host:localhost}" },
           ],
@@ -469,9 +469,9 @@ async function seedCodeChallenges() {
           careerPathId: cloudPath.id,
           requiredLevel: 3,
           xpReward: 70,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "def calculate_uptime(downtime_minutes):\n    # Return uptime percentage\n    pass",
-          },
+          }),
           testCases: [
             { input: "0", expectedOutput: "100.0" },
             { input: "43200", expectedOutput: "0.0" },
@@ -485,9 +485,9 @@ async function seedCodeChallenges() {
           careerPathId: cloudPath.id,
           requiredLevel: 15,
           xpReward: 140,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function scalingDecision(cpu, memory) {\n  // Return 'scale_up', 'scale_down', or 'no_change'\n}",
-          },
+          }),
           testCases: [
             { input: "85,90", expectedOutput: "scale_up" },
             { input: "20,15", expectedOutput: "scale_down" },
@@ -501,9 +501,9 @@ async function seedCodeChallenges() {
           careerPathId: cloudPath.id,
           requiredLevel: 6,
           xpReward: 85,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "from datetime import datetime\n\ndef needs_rotation(created_date, max_days):\n    # Return True or False\n    pass",
-          },
+          }),
           testCases: [
             { input: "2024-01-01,30", expectedOutput: "true" },
           ],
@@ -516,9 +516,9 @@ async function seedCodeChallenges() {
           careerPathId: cloudPath.id,
           requiredLevel: 2,
           xpReward: 50,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "def validate_port(port):\n    # Return True or False\n    pass",
-          },
+          }),
           testCases: [
             { input: "8080", expectedOutput: "true" },
             { input: "70000", expectedOutput: "false" },
@@ -543,9 +543,9 @@ async function seedCodeChallenges() {
           careerPathId: mobilePath.id,
           requiredLevel: 1,
           xpReward: 60,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function validateEmail(email) {\n  // Return true or false\n}",
-          },
+          }),
           testCases: [
             { input: "user@example.com", expectedOutput: "true" },
             { input: "invalid.email", expectedOutput: "false" },
@@ -559,9 +559,9 @@ async function seedCodeChallenges() {
           careerPathId: mobilePath.id,
           requiredLevel: 3,
           xpReward: 70,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function formatPhoneNumber(digits) {\n  // Your code here\n}",
-          },
+          }),
           testCases: [
             { input: "1234567890", expectedOutput: "(123) 456-7890" },
           ],
@@ -574,9 +574,9 @@ async function seedCodeChallenges() {
           careerPathId: mobilePath.id,
           requiredLevel: 8,
           xpReward: 110,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function detectSwipe(startX, startY, endX, endY) {\n  // Return 'up', 'down', 'left', or 'right'\n}",
-          },
+          }),
           testCases: [
             { input: "100,100,200,100", expectedOutput: "right" },
             { input: "100,100,100,200", expectedOutput: "down" },
@@ -590,9 +590,9 @@ async function seedCodeChallenges() {
           careerPathId: mobilePath.id,
           requiredLevel: 5,
           xpReward: 75,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function getOrientation(width, height) {\n  // Return 'portrait' or 'landscape'\n}",
-          },
+          }),
           testCases: [
             { input: "375,667", expectedOutput: "portrait" },
             { input: "667,375", expectedOutput: "landscape" },
@@ -606,9 +606,9 @@ async function seedCodeChallenges() {
           careerPathId: mobilePath.id,
           requiredLevel: 12,
           xpReward: 130,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function debounce(func, delay) {\n  // Your code here\n}",
-          },
+          }),
           testCases: [
             { input: "function,300", expectedOutput: "function" },
           ],
@@ -621,9 +621,9 @@ async function seedCodeChallenges() {
           careerPathId: mobilePath.id,
           requiredLevel: 4,
           xpReward: 65,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function isImageUrl(url) {\n  // Return true or false\n}",
-          },
+          }),
           testCases: [
             { input: "https://example.com/image.jpg", expectedOutput: "true" },
             { input: "https://example.com/page.html", expectedOutput: "false" },
@@ -637,9 +637,9 @@ async function seedCodeChallenges() {
           careerPathId: mobilePath.id,
           requiredLevel: 6,
           xpReward: 80,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function scrollPercentage(scrollTop, scrollHeight, clientHeight) {\n  // Return percentage\n}",
-          },
+          }),
           testCases: [
             { input: "50,200,100", expectedOutput: "50" },
             { input: "100,200,100", expectedOutput: "100" },
@@ -653,9 +653,9 @@ async function seedCodeChallenges() {
           careerPathId: mobilePath.id,
           requiredLevel: 10,
           xpReward: 120,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function parseDeepLink(url) {\n  // Return object with scheme, host, params\n}",
-          },
+          }),
           testCases: [
             { input: "myapp://profile?id=123", expectedOutput: "{scheme:myapp,host:profile,params:{id:123}}" },
           ],
@@ -668,9 +668,9 @@ async function seedCodeChallenges() {
           careerPathId: mobilePath.id,
           requiredLevel: 2,
           xpReward: 55,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function responsiveFontSize(screenWidth, baseFontSize) {\n  // Return scaled font size\n}",
-          },
+          }),
           testCases: [
             { input: "375,16", expectedOutput: "16" },
             { input: "750,16", expectedOutput: "32" },
@@ -684,9 +684,9 @@ async function seedCodeChallenges() {
           careerPathId: mobilePath.id,
           requiredLevel: 7,
           xpReward: 70,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function shouldShowBatteryWarning(batteryLevel) {\n  // Return true if below 20%\n}",
-          },
+          }),
           testCases: [
             { input: "15", expectedOutput: "true" },
             { input: "50", expectedOutput: "false" },
@@ -711,10 +711,10 @@ async function seedCodeChallenges() {
           careerPathId: securityPath.id,
           requiredLevel: 1,
           xpReward: 70,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "def check_password_strength(password):\n    # Return True or False\n    pass",
             javascript: "function checkPasswordStrength(password) {\n  // Return true or false\n}",
-          },
+          }),
           testCases: [
             { input: "Passw0rd!", expectedOutput: "true" },
             { input: "weak", expectedOutput: "false" },
@@ -728,9 +728,9 @@ async function seedCodeChallenges() {
           careerPathId: securityPath.id,
           requiredLevel: 8,
           xpReward: 120,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function sanitizeInput(input) {\n  // Remove <, >, &, quotes\n}",
-          },
+          }),
           testCases: [
             { input: "<script>alert('xss')</script>", expectedOutput: "scriptalert('xss')script" },
           ],
@@ -743,9 +743,9 @@ async function seedCodeChallenges() {
           careerPathId: securityPath.id,
           requiredLevel: 12,
           xpReward: 140,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function validateJWT(token) {\n  // Return true if valid structure\n}",
-          },
+          }),
           testCases: [
             { input: "eyJhbGc.eyJzdWI.signature", expectedOutput: "true" },
             { input: "invalid", expectedOutput: "false" },
@@ -759,9 +759,9 @@ async function seedCodeChallenges() {
           careerPathId: securityPath.id,
           requiredLevel: 18,
           xpReward: 200,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "class RateLimiter:\n    def __init__(self, max_requests, time_window):\n        pass\n    \n    def allow_request(self):\n        pass",
-          },
+          }),
           testCases: [
             { input: "5,60", expectedOutput: "true" },
           ],
@@ -774,9 +774,9 @@ async function seedCodeChallenges() {
           careerPathId: securityPath.id,
           requiredLevel: 10,
           xpReward: 130,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "def detect_sql_injection(query):\n    # Return True if suspicious\n    pass",
-          },
+          }),
           testCases: [
             { input: "SELECT * FROM users WHERE id = 1", expectedOutput: "false" },
             { input: "'; DROP TABLE users; --", expectedOutput: "true" },
@@ -790,9 +790,9 @@ async function seedCodeChallenges() {
           careerPathId: securityPath.id,
           requiredLevel: 3,
           xpReward: 75,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "def hash_password(password, salt):\n    # Simple hash simulation\n    pass",
-          },
+          }),
           testCases: [
             { input: "password123,salt123", expectedOutput: "hashed_value" },
           ],
@@ -805,9 +805,9 @@ async function seedCodeChallenges() {
           careerPathId: securityPath.id,
           requiredLevel: 15,
           xpReward: 150,
-          starterCode: {
+          starterCode: JSON.stringify({
             javascript: "function detectXSS(html) {\n  // Return true if suspicious\n}",
-          },
+          }),
           testCases: [
             { input: "<p>Hello World</p>", expectedOutput: "false" },
             { input: "<script>alert('XSS')</script>", expectedOutput: "true" },
@@ -821,9 +821,9 @@ async function seedCodeChallenges() {
           careerPathId: securityPath.id,
           requiredLevel: 5,
           xpReward: 80,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "def validate_ipv4(ip):\n    # Return True or False\n    pass",
-          },
+          }),
           testCases: [
             { input: "192.168.1.1", expectedOutput: "true" },
             { input: "256.1.1.1", expectedOutput: "false" },
@@ -837,9 +837,9 @@ async function seedCodeChallenges() {
           careerPathId: securityPath.id,
           requiredLevel: 6,
           xpReward: 85,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "import random\nimport string\n\ndef generate_csrf_token(length):\n    # Generate random token\n    pass",
-          },
+          }),
           testCases: [
             { input: "32", expectedOutput: "32" },
           ],
@@ -852,9 +852,9 @@ async function seedCodeChallenges() {
           careerPathId: securityPath.id,
           requiredLevel: 14,
           xpReward: 135,
-          starterCode: {
+          starterCode: JSON.stringify({
             python: "def validate_session_id(session_id):\n    # Check length and format\n    pass",
-          },
+          }),
           testCases: [
             { input: "a1b2c3d4e5f6g7h8", expectedOutput: "true" },
             { input: "short", expectedOutput: "false" },

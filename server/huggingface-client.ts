@@ -20,9 +20,10 @@ export async function classifyQuestionHF(questionText: string): Promise<{
       },
     });
 
+    const classification = Array.isArray(result) ? result[0] : result;
     return {
-      category: result.labels[0],
-      confidence: result.scores[0],
+      category: (classification as any).labels?.[0] ?? "unknown",
+      confidence: (classification as any).scores?.[0] ?? 0,
     };
   } catch (error) {
     console.error("HF classification error:", error);
@@ -128,7 +129,7 @@ Generate exactly ${count} questions following this format:`;
     
     // Strategy 2: Multiple JSON objects
     if (questions.length === 0) {
-      const objectMatches = generatedText.matchAll(/\{[\s\S]*?"question"[\s\S]*?\}/g);
+      const objectMatches = Array.from(generatedText.matchAll(/\{[\s\S]*?"question"[\s\S]*?\}/g));
       for (const match of objectMatches) {
         try {
           const obj = JSON.parse(match[0]);
