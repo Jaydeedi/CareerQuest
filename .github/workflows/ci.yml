@@ -146,17 +146,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Render CLI
-        run: |
-          curl -fsSL https://cdn.render.com/cli/latest/install.sh | bash
-          export PATH="$HOME/.render/bin:$PATH"   # Make CLI available immediately
-          echo "$HOME/.render/bin" >> $GITHUB_PATH
-
-      - name: Deploy to Render
+      - name: Install Render CLI and Deploy
         env:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
           RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
-        run: render deploy --service $RENDER_SERVICE_ID --wait
+        run: |
+          # Install Render CLI
+          curl -fsSL https://cdn.render.com/cli/latest/install.sh | bash
+          export PATH="$HOME/.render/bin:$PATH"
+          
+          # Verify CLI is installed
+          render --version
+          
+          # Deploy
+          render deploy --service $RENDER_SERVICE_ID --wait
 
   all-checks-passed:
     name: All Checks Passed
