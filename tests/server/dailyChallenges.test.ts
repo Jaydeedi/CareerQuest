@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 
 function getDifficultyOptions(level: number): string[] {
   if (level < 3) return ['beginner', 'easy'];
-  if (level < 7) return ['easy', 'beginner', 'mediup'];
+  if (level < 7) return ['easy', 'beginner', 'medium'];
   if (level < 12) return ['easy', 'medium'];
   if (level < 18) return ['medium', 'intermediate'];
   return ['medium', 'intermediate', 'hard', 'advanced'];
