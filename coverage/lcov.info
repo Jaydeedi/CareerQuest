@@ -1,5 +1,5 @@
 TN:
-SF:client/src/lib/passwordValidation.ts
+SF:client\src\lib\passwordValidation.ts
 FN:14,validatePasswordStrength
 FN:47,getPasswordRequirements
 FNF:2
@@ -37,7 +37,7 @@ BRF:10
 BRH:10
 end_of_record
 TN:
-SF:server/auth.ts
+SF:server\auth.ts
 FN:9,hashPassword
 FN:13,comparePassword
 FN:20,(anonymous_2)
@@ -96,7 +96,7 @@ BRF:10
 BRH:6
 end_of_record
 TN:
-SF:server/dailyChallenges.ts
+SF:server\dailyChallenges.ts
 FN:12,(anonymous_0)
 FN:23,(anonymous_1)
 FN:24,(anonymous_2)
@@ -270,7 +270,7 @@ BRF:60
 BRH:0
 end_of_record
 TN:
-SF:server/learning-intelligence.ts
+SF:server\learning-intelligence.ts
 FN:37,loadQuestionsFromMLDataset
 FN:44,(anonymous_1)
 FN:291,(anonymous_2)
@@ -606,7 +606,7 @@ BRF:117
 BRH:0
 end_of_record
 TN:
-SF:server/ml-client.ts
+SF:server\ml-client.ts
 FN:9,callMLService
 FN:12,(anonymous_1)
 FN:44,healthCheck
@@ -655,7 +655,7 @@ BRF:8
 BRH:0
 end_of_record
 TN:
-SF:server/naiveBayes.ts
+SF:server\naiveBayes.ts
 FN:31,(anonymous_0)
 FN:53,(anonymous_1)
 FN:125,(anonymous_2)
@@ -844,7 +844,7 @@ BRF:62
 BRH:0
 end_of_record
 TN:
-SF:server/verify-question-dataset.ts
+SF:server\verify-question-dataset.ts
 FN:5,verifyQuestionDataset
 FN:22,(anonymous_1)
 FN:23,(anonymous_2)
@@ -917,7 +917,7 @@ BRF:12
 BRH:0
 end_of_record
 TN:
-SF:shared/schema.ts
+SF:shared\schema.ts
 FN:38,(anonymous_0)
 FN:70,(anonymous_1)
 FN:71,(anonymous_2)
